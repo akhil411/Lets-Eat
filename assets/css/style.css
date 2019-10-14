@@ -1,0 +1,135 @@
+html, body {
+    background-image: url("../../assets/images/background.jpg");
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    height: 100%;
+}
+
+Header {
+    text-align: center;
+    font-family: 'Pacifico', cursive;
+    font-size: 100px;
+    color: rgb(45, 8, 80);
+}
+
+.input-group-text, .dropdown-toggle, .btn-success {
+font-family: cursive;
+}
+
+.input-group-text {
+    color: rgb(45, 8, 80);
+}
+
+.findHeading, h5, p, address {
+    font-family: 'Lobster', cursive;
+    color: rgb(45, 8, 80)
+}
+
+.yelpSite {
+    font-family: 'Lobster', cursive;
+    text-decoration: underline; 
+}
+
+.radioChoice {
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+ h2 {
+    font-family: 'Kalam', cursive;
+    font-weight: bold;
+    color: rgb(45, 8, 80);
+}
+
+#selectedLocation {
+    font-family: cursive;
+    color: rgb(45, 8, 80);
+    text-transform: capitalize;
+    text-align: center;
+}
+
+#changeLocation, #locationField {
+    text-align: center;
+}
+
+.box, .restaurantCard {
+    margin: 10px;
+    border: 5px solid white;
+}
+
+.recipe-click-button  .recipe-details {
+    display: none;
+}
+
+
+.mfp-inline-holder {
+    background-color: black;
+}
+
+.loader {
+    border: 16px solid rgb(45, 8, 80);
+    border-radius: 50%;
+    border-top: 16px solid yellow;
+    width: 120px;
+    height: 120px;
+    -webkit-animation: spin 1s linear infinite; /* Safari */
+    animation: spin 1s linear infinite;
+    margin: auto;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.btn-custom {
+    background-color:#6A6A6A;
+    color:white;
+}
+
+.btn-warning {
+    font-family: 'Kalam', cursive;
+    color: rgb(45, 8, 80);
+    border: none;
+}
+
+#submit {
+    font-weight: bold;
+}
+
+.card-body {
+    background-color: #a7a4a4
+}
+
+.recipe-details, .restaurantDetails, .mfp-container {
+    background-color: transparent;
+    color: white;
+    text-align: center;
+}
+
+.mfp-close-btn-in .mfp-close, .modalIngredients, .modalHealth, h3 {
+    color: whitesmoke;
+    font-family: cursive;
+}
+
+.restModalInfo {
+    line-height: 1.6;
+}
+
+.resultName, .mfp-close, .restModalTitle {
+    color: yellow;
+    font-family: 'Lobster', cursive;
+}
+.btn {
+    cursor: pointer;
+}
+
