@@ -1,10 +1,12 @@
-service: serverless-food-app
+service: serverless-lets-eat-food-app
 
 provider:
   name: aws
   runtime: nodejs12.13
+  region: ${opt:region, 'ap-southeast-2'}
   environment:
-    DYNAMODB_TABLE: ${self:service}-${opt:stage, self:provider.stage}
+    FOOD_APP_USERS_TABLE: { "Ref": "DynamoDbFoodUsers" }
+    FOOD_APP_ITEMS_TABLE: { "Ref": "DynamoDbFoodItems" }
   iamRoleStatements:
     - Effect: Allow
       Action:
@@ -14,22 +16,26 @@ provider:
         - dynamodb:PutItem
         - dynamodb:UpdateItem
         - dynamodb:DeleteItem
-      Resource: "arn:aws:dynamodb:${opt:region, self:provider.region}:*:table/${self:provider.environment.DYNAMODB_TABLE}"
+            Resource:
+        - { "Fn::GetAtt": ["DynamoDbFoodUsers", "Arn"] } 
+        - { "Fn::GetAtt": ["DynamoDbFoodItems", "Arn"] }
 
 functions:
-  create:
-    handler: food/create.create
+  registerFoodUser:
+    handler: food/registerUser.register
+    environment:
+      TABLE_NAME: { "Ref": "DynamoDbFoodUsers" }
     events:
       - http:
-          path: pets
+          path: user
           method: post
           cors: true
 
 resources:
   Resources:
-    PetsTable:
+    DynamoDbFoodUsers:
       Type: AWS::DynamoDB::Table
-      DeletionPolicy: Retain # Keeps around the DynamoDB resource when we redeploy/destroy
+      DeletionPolicy: Retain 
       Properties:
         AttributeDefinitions:
           -
@@ -42,4 +48,12 @@ resources:
         ProvisionedThroughput:
           ReadCapacityUnits: 1
           WriteCapacityUnits: 1
-        TableName: ${self:provider.environment.DYNAMODB_TABLE}
+        TableName: ${self:provider.environment.FOOD_APP_USERS_TABLE}
+
+plugins:
+  - serverless-finch
+
+custom:
+  client:
+    bucketName: lets-eat-food-app-20200606
+    distributionFolder: ../client/build

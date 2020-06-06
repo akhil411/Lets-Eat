@@ -9,10 +9,10 @@ const AWS = require('aws-sdk'); // eslint-disable-line import/no-extraneous-depe
 // - AWS Documentation
 const dynamoDb = new AWS.DynamoDB.DocumentClient();
 
-module.exports.create = (event, context, callback) => {
+module.exports.register = (event, context, callback) => {
   const timestamp = new Date().getTime();
   const data = JSON.parse(event.body);
-  if (typeof data.petName !== 'string' || typeof data.petBreed !== 'string') {
+  if (typeof data.name !== 'string' || typeof data.name !== 'string') {
     console.error('Validation Failed');
     callback(new Error('Couldn\'t create the pet item.'));
     return;
@@ -21,9 +21,10 @@ module.exports.create = (event, context, callback) => {
   const params = {
     TableName: process.env.DYNAMODB_TABLE,
     Item: {
-      id: uuid.v1(),
-      petName: data.petName,
-      petBreed: data.petBreed,
+      id: data.name,
+      name: data.name,
+      email: data.email,
+      password: data.password,
       createdAt: timestamp,
       updatedAt: timestamp,
     },
