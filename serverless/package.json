@@ -1,10 +1,11 @@
 {
-  "name": "serverless-node-rest-api",
+  "name": "serverless-lets-eat-food-app",
   "version": "1.0.0",
-  "description": "Serverless REST HTTP API for CRUD operations on DynamoDB",
-  "author": "Fernando Medina Corey",
+  "description": "Serverless Lets Eat Food App",
+  "author": "Akhil Vijayan",
   "license": "MIT",
   "dependencies": {
-    "uuid": "^2.0.3"
+    "uuid": "^2.0.3",
+    "serverless-finch": "^1.1.1"
   }
 }
