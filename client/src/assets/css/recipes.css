@@ -1,0 +1,35 @@
+.recipe-page-container {
+    max-width: 960px;
+    margin: auto;
+    padding: 0 30px 0 30px;
+}
+
+.loader {
+    margin-top: 30px;
+    width: 100%;
+    text-align: center;
+}
+
+.card {
+    margin: 15px;
+}
+
+.card-header:hover {
+    cursor: pointer;
+}
+
+.accordion>.card>.card-header {
+    margin-bottom: 0px;
+}
+
+.card-header {
+    background-color: transparent;
+} 
+
+.accordion-collapse {
+    border-bottom: 1px solid rgba(0,0,0,.125);
+}
+
+.card-header-click {
+    border-bottom: 0px;
+}

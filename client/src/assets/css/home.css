@@ -4,5 +4,15 @@
     background-size: cover;
     background-position: center;
     height: 40vw;
-    border: none;
+    border-radius: unset;
+}
+
+.restaurant-selection {
+    min-height: 250px;
+    background-color: #E9EAE6;
+}
+
+.recipe-selection {
+    min-height: 250px;
+    background-color: white;
 }

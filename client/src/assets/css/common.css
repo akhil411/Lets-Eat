@@ -1,3 +1,7 @@
+.page-content {
+    min-height: calc(100vh - 246px);
+}
+
 .navbar {
     background-color: #FFC929;
 }
@@ -13,4 +17,9 @@
 .navbar-light .navbar-nav .nav-link {
     color: white;
     font-weight: bold;
+}
+
+.footer-container {
+    background-color: beige;
+    height: 150px;
 }

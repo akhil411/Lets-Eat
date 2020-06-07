@@ -9,6 +9,7 @@ var mealType;
 //     mealType = $(this).attr("data-meal");
 // }) 
 
+
 function recipeData() {
     mealDiet = $(".diet").attr("data-diet");
     mealType = $(".meal-type").attr("data-meal");

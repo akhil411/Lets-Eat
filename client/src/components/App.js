@@ -7,8 +7,10 @@ import Header from "./common/Header";
 import PageNotFound from "./PageNotFound";
 import Register from "./register/Register";
 import Login from "./login/Login";
-import News from "./news/News";
+import Footer from "./common/Footer";
 import Account from "./account/Account";
+import Restaurants from "./restaurants/Restaurants";
+import Recipes from "./recipes/Recipes";
 import PrivateRoute from "./PrivateRoute";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -45,10 +47,12 @@ const App = ({
                 <Route exact path="/" component={HomePage} />
                 <Route exact path="/login" component={Login} />
                 <Route exact path="/register" component={Register} />
-                <Route exact path="/news" component={News} />
+                <Route exact path="/restaurants" component={Restaurants} />
+                <Route exact path="/recipes" component={Recipes} />
                 <PrivateRoute exact path="/account" component={Account} />
                 <Route component={PageNotFound} />
             </Switch>
+            <Footer />
             <ToastContainer
                 position="bottom-left"
                 autoClose={5000}

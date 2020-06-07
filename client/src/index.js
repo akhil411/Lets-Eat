@@ -13,6 +13,8 @@ import "./assets/css/style.css";
 import "./assets/css/responsive.css";
 import "./assets/css/common.css";
 import "./assets/css/home.css";
+import "./assets/css/recipes.css";
+import "./assets/css/restaurants.css";
 
 const sagaMiddleware = createSagaMiddleware();
 

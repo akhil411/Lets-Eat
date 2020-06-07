@@ -20,7 +20,7 @@ const Header = ({
     return (
         <Navbar expand="sm">
             <NavLink to="/" className="navbar-brand">
-                <img src="assets/images/lets-eat-logo.png" alt="logo-image"></img>
+                <img src="assets/images/lets-eat-logo.png" alt="logo"></img>
             </NavLink>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
