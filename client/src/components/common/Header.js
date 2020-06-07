@@ -18,8 +18,10 @@ const Header = ({
     }
 
     return (
-        <Navbar bg="light" expand="sm">
-            <NavLink to="/" activeStyle={activeStyle} exact className="navbar-brand">Home</NavLink>
+        <Navbar expand="sm">
+            <NavLink to="/" className="navbar-brand">
+                <img src="assets/images/lets-eat-logo.png" alt="logo-image"></img>
+            </NavLink>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
                 {(isAuthenticated) ? (

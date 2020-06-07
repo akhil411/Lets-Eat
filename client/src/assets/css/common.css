@@ -1,0 +1,16 @@
+.navbar {
+    background-color: #FFC929;
+}
+
+.navbar .navbar-brand {
+    margin-left: calc(50vw - 110px);
+}
+
+.navbar .navbar-brand img {
+    height: 70px;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: white;
+    font-weight: bold;
+}

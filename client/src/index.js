@@ -11,6 +11,8 @@ import App from "./components/App";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./assets/css/style.css";
 import "./assets/css/responsive.css";
+import "./assets/css/common.css";
+import "./assets/css/home.css";
 
 const sagaMiddleware = createSagaMiddleware();
 

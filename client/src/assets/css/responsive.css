@@ -3,4 +3,14 @@
     position: absolute;
     right: 20px;
   }
+  .navbar .navbar-brand {
+    margin-left: 0px;
+  }
+}
+
+
+@media screen and (max-width: 479px) {
+  #root .navbar .navbar-brand {
+    margin-left: 0px;
+  }
 }
