@@ -1,3 +1,35 @@
+@font-face {
+    font-family: 'crimson-italic';
+    src: url('../fonts/CrimsonText-Italic.ttf'); 
+}
+
+@font-face {
+    font-family: 'crimson-regular';
+    src: url('../fonts/CrimsonText-Regular.ttf'); 
+}
+
+body {
+    font-family: 'crimson-regular';
+    letter-spacing: 0.5px;
+}
+
+p {
+    font-size: 17px;
+}
+
+button {
+    font-family: 'crimson-italic';
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+}
+
+*:focus {
+    outline: 0 !important;
+}
+
 .page-content {
     min-height: calc(100vh - 246px);
 }
@@ -23,3 +55,5 @@
     background-color: beige;
     height: 150px;
 }
+
+

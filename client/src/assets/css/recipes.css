@@ -14,6 +14,11 @@
     margin: 15px;
 }
 
+.accordion-recipe {
+    width: 750px;
+    margin: auto; 
+}
+
 .card-header:hover {
     cursor: pointer;
 }
@@ -32,4 +37,17 @@
 
 .card-header-click {
     border-bottom: 0px;
+}
+
+.recipe-results-image {
+    height: 200px;
+}
+
+.recipe-button {
+    background-color: #ffc107;
+    height: 32px;
+}
+
+.accordion-text {
+    width: 350px;
 }

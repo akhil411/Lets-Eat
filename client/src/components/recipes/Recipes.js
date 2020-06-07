@@ -51,7 +51,7 @@ export default function Recipes() {
                         <Form.Label>Your Name</Form.Label>
                         <Form.Control
                             type="text"
-                            placeholder=""
+                            placeholder="eg: mushroom, chicken, pizza"
                             value={searchitem}
                             onChange={handleChange}
                         />
@@ -65,17 +65,26 @@ export default function Recipes() {
                     {(loading === true ? (<Spinner className="search-loader" animation="grow" />) : (null))}
                     {errors.results ? <div className="form-error">{errors.results}</div> : null}
                 </div>
-                <Accordion >
+                <Accordion className="accordion-recipe">
                     {(searchresults) ? (
                         searchresults.map((result, i) => (
                             <Card >
                                 <Card.Header>
                                     <Accordion.Toggle className="card-header-click" as={Card.Header} variant="link" eventKey={i}>
-                                    <img src={result.recipe.image} className="recipe-results-image" alt="recipe"></img>
-                        </Accordion.Toggle>
+                                        <div className="accordion-header-contents d-flex flex-row flex-wrap justify-content-space-around p-4 mx-2 my-2 my-lg-1 text-center">
+                                            <img src={result.recipe.image} className="recipe-results-image" alt="recipe"></img>
+                                            <div className="accordion-text px-4">
+                                                <h3>{result.recipe.label}</h3>
+                                                <p><strong>Calories: </strong>{result.recipe.calories}</p>
+                                                <button className="recipe-button">More Details</button>
+                                            </div>
+                                        </div>
+                                    </Accordion.Toggle>
                                 </Card.Header>
                                 <Accordion.Collapse eventKey={i} className="accordion-collapse">
                                     <Card.Body>
+                                    <p><strong>Labels: </strong>{result.recipe.healthLabels}</p>
+                                    <p><strong>Ingredients: </strong>{result.recipe.ingredientLines}</p>
                                     </Card.Body>
                                 </Accordion.Collapse>
                             </Card>
