@@ -3,7 +3,11 @@
 <p> Welcome to Lets-Eat-Food-App, 
 <p>This is React Serverless Application built using Serverless Framework and AWS Services.
 
-Currently working on bug fixing. The App has API CORS Policy issue.
+Currently working on following bugs:
+<li>password mismatch condition failing
+<li>get geolocation failing due to http not https
+<li>styling home page carousel issue
+
 
 <h3>Website</h3>
 
