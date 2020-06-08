@@ -1,6 +1,5 @@
 import { put, takeLatest } from 'redux-saga/effects';
 import setAuthToken from "../../utils/setAuthToken";
-import jwt_decode from "jwt-decode";
 import API from "../../api/api";
 import bcrypt from "bcryptjs";
 import jwt from 'jsonwebtoken';
@@ -9,7 +8,6 @@ function* loginUser(userData) {
     try {
         const json = yield API.loginUser(userData.userData)
             .then(res => {
-                console.log(res);
                 const condition = bcrypt.compare(userData.userData.password, res.data.password);
                 if (condition) {
                     const payload = {
@@ -35,7 +33,6 @@ function* loginUser(userData) {
             .catch(err => {
                 throw err.response.data;
             });
-            console.log(json);
         yield put({
             type: "SET_CURRENT_USER",
             json: json

@@ -39,7 +39,7 @@ button {
 }
 
 .page-content {
-    min-height: calc(100vh - 246px);
+    min-height: calc(100vh - 196px);
 }
 
 .navbar {
@@ -60,8 +60,17 @@ button {
 }
 
 .footer-container {
-    background-color: beige;
-    height: 150px;
+    background-color: #FFC929;
+    height: 100px;
+}
+
+.footer-logo-image {
+    height: 50px;
+}
+
+.footer-contact-box img {
+    width: 30px;
+    margin: 10px;
 }
 
 

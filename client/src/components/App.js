@@ -47,8 +47,8 @@ const App = ({
                 <Route exact path="/" component={HomePage} />
                 <Route exact path="/login" component={Login} />
                 <Route exact path="/register" component={Register} />
-                <Route exact path="/restaurants" component={Restaurants} />
-                <Route exact path="/recipes" component={Recipes} />
+                <PrivateRoute exact path="/restaurants" component={Restaurants} />
+                <PrivateRoute exact path="/recipes" component={Recipes} />
                 <PrivateRoute exact path="/account" component={Account} />
                 <Route component={PageNotFound} />
             </Switch>

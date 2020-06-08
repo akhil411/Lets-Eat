@@ -16,3 +16,68 @@
     min-height: 250px;
     background-color: white;
 }
+
+.carousel .carousel-indicators, .carousel .carousel-control-prev, .carousel .carousel-control-next {
+    display: none;
+}
+
+.carousel {
+    width: 300px;
+}
+
+.modal-call-button {
+    border-radius: 4px;
+    background-color:#FFC929;
+    border: 1px solid white;
+    color: black;
+    text-align: center;
+    font-size: 20px;
+    padding: 5px;
+    width: 150px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin-top: 20px;
+    margin-left: 50px;
+  }
+  
+  .modal-call-button span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+  }
+  
+  .modal-call-button span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+  }
+  
+  .modal-call-button:hover span {
+    padding-right: 25px;
+  }
+  
+  .modal-call-button:hover span:after {
+    opacity: 1;
+    right: 0;
+  }
+
+
+  .carousel .carousel-item {
+    transition-property: none;
+    transition-duration: 5s;
+    transition-timing-function: ease-in-out;
+    transition-delay: 8s;
+}
+
+.restaurant-carousel {
+    margin-left: 30px;
+}
+
+.restaurant-carousel .modal-call-button {
+    width: 175px;
+}
+

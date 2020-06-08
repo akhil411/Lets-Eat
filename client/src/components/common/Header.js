@@ -26,7 +26,8 @@ const Header = ({
             <Navbar.Collapse id="basic-navbar-nav">
                 {(isAuthenticated) ? (
                     <Nav className="mr-auto navbar-right-section">
-                        <NavLink to="/account" activeStyle={activeStyle} className="nav-link">Account</NavLink>
+                        <NavLink to="/restaurants" activeStyle={activeStyle} className="nav-link">Restaurants</NavLink>
+                        <NavLink to="/recipes" activeStyle={activeStyle} className="nav-link">Recipes</NavLink>
                         <a href="" className="nav-link" onClick={handleClick}>Logout</a>
                     </Nav>
                 ) : (

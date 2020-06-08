@@ -38,7 +38,6 @@ export default function Recipes() {
             .then((response) => {
                 setloading(false);
                 if (response.data.businesses.length !== 0) {
-                    console.log(response.data.businesses)
                     setsearchresults(response.data.businesses);
                 } else {
                     const errors = {};
