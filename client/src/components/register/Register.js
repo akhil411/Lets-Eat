@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import API from "../../api/api";
 import { toast } from "react-toastify";
+import bcrypt from "bcryptjs";
 
 function Register({ history }) {
     const [userData, setUserData] = useState({ name: "", email: "", password: "", confirmPassword: "" });
@@ -36,20 +37,26 @@ function Register({ history }) {
     function handleSave(event) {
         event.preventDefault();
         if (!formIsValid()) return;
-        API.registerUser(userData)
-            .then((response) => {
-                if (response.status === 200) {
-                    toast.success("Register Success!!!")
-                    history.push("/login");
-                } else {
-                    toast.error("Register Failed!!!");
-                }
-            })
-            .catch((err) => {
-                const errors = {};
-                errors.email = "*Email already exists";
-                setErrors(errors);
-            })
+        bcrypt.genSalt(10, (err, salt) => {
+            bcrypt.hash(userData.password, salt, (err, hash) => {
+                if (err) throw err;
+                userData.password = hash;
+                API.registerUser(userData)
+                    .then((response) => {
+                        if (response.status === 200) {
+                            toast.success("Register Success!!!")
+                            history.push("/login");
+                        } else {
+                            toast.error("Register Failed!!!");
+                        }
+                    })
+                    .catch((err) => {
+                        const errors = {};
+                        errors.email = "*Email already exists";
+                        setErrors(errors);
+                    })
+            });
+        })
     }
 
     return (

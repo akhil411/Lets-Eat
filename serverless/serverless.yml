@@ -36,6 +36,14 @@ functions:
           method: post
           cors: true
 
+  get:
+    handler: food/loginUser.login
+    events:
+      - http:
+          path: user/{id}
+          method: get
+          cors: true
+
 resources:
   Resources:
     DynamoDbFoodUsers:
