@@ -32,7 +32,6 @@ export default function Recipes() {
                 setloading(false);
                 if (response.data.hits.length !== 0) {
                     setsearchresults(response.data.hits);
-                    console.log(response.data.hits);
                 } else {
                     const errors = {};
                     errors.results = "No results found! Check your search item";
@@ -48,7 +47,7 @@ export default function Recipes() {
                 <h3>Search for your favourite Recipe</h3>
                 <Form onSubmit={handleSave}>
                     <Form.Group controlId="formBasicName">
-                        <Form.Label>Your Name</Form.Label>
+                        <Form.Label>Let's Cook With</Form.Label>
                         <Form.Control
                             type="text"
                             placeholder="eg: mushroom, chicken, pizza"
@@ -68,7 +67,7 @@ export default function Recipes() {
                 <Accordion className="accordion-recipe">
                     {(searchresults) ? (
                         searchresults.map((result, i) => (
-                            <Card >
+                            <Card key={i}>
                                 <Card.Header>
                                     <Accordion.Toggle className="card-header-click" as={Card.Header} variant="link" eventKey={i}>
                                         <div className="accordion-header-contents d-flex flex-row flex-wrap justify-content-space-around p-4 mx-2 my-2 my-lg-1 text-center">

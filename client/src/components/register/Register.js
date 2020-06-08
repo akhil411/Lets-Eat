@@ -26,7 +26,8 @@ function Register({ history }) {
         if (!name) errors.name = "*Name is required.";
         if (!email) errors.email = "*Email is required";
         if (!password) errors.password = "*Password is required";
-        if (!confirmPassword) errors.confirmPassword = "*Confirm password is required"
+        if (!confirmPassword) errors.confirmPassword = "*Confirm password is required";
+        if (confirmPassword !== password) errors.confirmPassword = "*Passwords should match"
 
         setErrors(errors);
         return Object.keys(errors).length === 0;
@@ -34,15 +35,20 @@ function Register({ history }) {
 
     function handleSave(event) {
         event.preventDefault();
-        setUserData({ name: "", email: "", password: "", confirmPassword: "" });
         if (!formIsValid()) return;
         API.registerUser(userData)
-            .then(() => {
-                toast.success("Register Success!!!")
-                history.push("/login");
+            .then((response) => {
+                if (response.status === 200) {
+                    toast.success("Register Success!!!")
+                    history.push("/login");
+                } else {
+                    toast.error("Register Failed!!!");
+                }
             })
             .catch((err) => {
-                console.log(err.response);
+                const errors = {};
+                errors.email = "*Email already exists";
+                setErrors(errors);
             })
     }
 

@@ -64,8 +64,9 @@ $(document).on("click", "#submit", function () {
         if ($("#userInput").val() !== "") {
             restaurantSearchInput = $("#userInput").val();
             
-            restaurantQueryURL = 'https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term="' + restaurantSearchInput + '"&latitude=' + selectedLatitude + '&longitude=' + selectedLongitude;
+            restaurantQueryURL = 'https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?latitude=' + selectedLatitude + '&longitude=' + selectedLongitude + '&term="' + restaurantSearchInput + '"';
     
+            console.log(restaurantQueryURL)
             if (priceFilter !== undefined) {
                 restaurantQueryURL = restaurantQueryURL + "&price=" + priceFilter;
             }

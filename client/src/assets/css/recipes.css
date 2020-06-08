@@ -40,7 +40,7 @@
 }
 
 .recipe-results-image {
-    height: 200px;
+    width: 210px;
 }
 
 .recipe-button {
@@ -50,4 +50,10 @@
 
 .accordion-text {
     width: 350px;
+}
+
+.recipe-page-container h3 {
+    margin-top: 30px;
+    font-weight: 500;
+    line-height: 1.2;
 }
