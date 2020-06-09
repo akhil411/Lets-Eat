@@ -18,7 +18,7 @@ const Header = ({
     }
 
     return (
-        <Navbar expand="sm">
+        <Navbar expand="md">
             <NavLink to="/" className="navbar-brand">
                 <img src="assets/images/lets-eat-logo.png" alt="logo"></img>
             </NavLink>

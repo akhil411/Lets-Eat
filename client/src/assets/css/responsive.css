@@ -1,4 +1,4 @@
-@media screen and (min-width: 576px) {
+@media screen and (min-width: 767px) {
   .navbar-right-section {
     position: absolute;
     right: 20px;
@@ -27,5 +27,8 @@
     width: auto;
     padding: 0;
     margin-top: 20px;
+  }
+  #root .navbar .navbar-brand img {
+    height: 50px;
   }
 }
