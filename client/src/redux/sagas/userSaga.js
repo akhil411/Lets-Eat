@@ -8,37 +8,45 @@ function* loginUser(userData) {
     try {
         const json = yield API.loginUser(userData.userData)
             .then(res => {
-                const condition = bcrypt.compare(userData.userData.password, res.data.password);
-                if (condition) {
-                    const payload = {
-                        email: res.data.email,
-                        name: res.data.name,
-                    };
-                    jwt.sign(
-                        payload,
-                        "secret",
-                        {
-                            expiresIn: 300 
-                        },
-                        (err, token) => {
-                            token = "Bearer " + token;
-                            console.log(token);
-                            localStorage.setItem("jwtToken", token);
-                            setAuthToken(token);
-                        }
-                    );
-                    return payload;
+                if(!res.data) {
+                    throw new Error ("Check Email");
                 }
+                const load = bcrypt.compare(userData.userData.password, res.data.password)
+                .then( isMatch => {
+                    if (isMatch) {
+                        const payload = {
+                            email: res.data.email,
+                            name: res.data.name,
+                        };
+                        jwt.sign(
+                            payload,
+                            "secret",
+                            {
+                                expiresIn: 3600 
+                            },
+                            (err, token) => {
+                                token = "Bearer " + token;
+                                localStorage.setItem("jwtToken", token);
+                                setAuthToken(token);
+                            }
+                        );
+                        return payload;
+                    } else {
+                        throw new Error ("Check Password");
+                    }
+                })
+                return load;
             })
-            .catch(err => {
-                throw err.response.data;
+            .catch(error => {
+                throw error;
             });
         yield put({
             type: "SET_CURRENT_USER",
             json: json
         });
     }
-    catch (error) {
+    catch (err) {
+        const error = err.message;
         yield put({
             type: 'SET_CURRENT_USER_FAILED',
             error

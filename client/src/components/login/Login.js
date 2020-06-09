@@ -78,7 +78,7 @@ const Login = ({
                 </Button>
                 </Form>
                 {(loginError) ? (
-                    <p>{loginError}</p>
+                    <div className="form-error"><p>{loginError}</p></div>
                 ) : (null)}
             </div>
         </div>

@@ -28,7 +28,6 @@ const App = ({
             setAuthToken(token);
             // Decode token and get user info and exp
             const decoded = jwt_decode(token);
-            console.log(decoded);
             // Set user and isAuthenticated
             setCurrentUser(decoded);
             // Check for expired token

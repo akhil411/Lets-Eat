@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Button, Form, Spinner, Accordion, Card } from 'react-bootstrap';
 import axios from "axios";
+import Location from "./Location";
 
 export default function Recipes() {
     const [searchitem, setsearchitem] = useState("");
@@ -52,6 +53,7 @@ export default function Recipes() {
         <div className="page-content">
             <div className="recipe-page-container">
                 <h3>Find a Restaurant Nearby</h3>
+                <Location />
                 <Form onSubmit={handleSave}>
                     <Form.Group controlId="formBasicName">
                         <Form.Label>Restaurant Type</Form.Label>
