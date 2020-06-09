@@ -10,15 +10,18 @@ const HomePage = () => {
                 <div className="recipe-selection-content d-flex flex-row justify-content-center align-items-center flex-wrap">
                     <Carousel pause={false}>
                         <Carousel.Item>
-                            <h3>Popular Recipe Categories</h3>
+                            <h3>Popular </h3>
+                            <h3>Recipe Categories</h3>
                             <Link to="/recipes"><button className="login-button modal-call-button"><span>Search Recipe </span></button></Link>
                         </Carousel.Item>
                         <Carousel.Item>
-                            <h3>Our Newest Recipes</h3>
+                            <h3>Our </h3>
+                            <h3>Newest Recipes</h3>
                             <Link to="/recipes"><button className="login-button modal-call-button"><span>Search Recipe </span></button></Link>
                         </Carousel.Item>
                         <Carousel.Item>
-                            <h3>Recipes by Ingredient</h3>
+                            <h3>Recipes </h3>
+                            <h3>by Ingredients</h3>
                             <Link to="/recipes"><button className="login-button modal-call-button"><span>Search Recipe </span></button></Link>
                         </Carousel.Item>
                     </Carousel>
@@ -34,15 +37,18 @@ const HomePage = () => {
                     </Link>
                     <Carousel pause={false} className="restaurant-carousel">
                         <Carousel.Item>
-                            <h3>Best Restaurants Nearby</h3>
+                            <h3>Best</h3>
+                            <h3>Restaurants Nearby</h3>
                             <Link to="/restaurants"><button className="login-button modal-call-button"><span>Search Restaurants </span></button></Link>
                         </Carousel.Item>
                         <Carousel.Item>
-                            <h3>Explore dining options</h3>
+                            <h3>Explore </h3>
+                            <h3>dining options</h3>
                             <Link to="/restaurants"><button className="login-button modal-call-button"><span>Search Restaurants </span></button></Link>
                         </Carousel.Item>
                         <Carousel.Item>
-                            <h3>Budget and Variety of Cuisines</h3>
+                            <h3>Budget </h3>
+                            <h3>Variety of Cuisines</h3>
                             <Link to="/restaurants"><button className="login-button modal-call-button"><span>Search Restaurants </span></button></Link>
                         </Carousel.Item>
                     </Carousel>

@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Button, Form, Spinner, Accordion, Card } from 'react-bootstrap';
+import React, { useState } from 'react';
+import { Form, Spinner, Accordion, Card } from 'react-bootstrap';
 import axios from "axios";
 import Location from "./Location";
 
@@ -7,14 +7,14 @@ export default function Recipes() {
     const [searchitem, setsearchitem] = useState("");
     const [loading, setloading] = useState(false);
     const [searchresults, setsearchresults] = useState("");
+    const [location, setlocation] = useState("");
     const [errors, setErrors] = useState({});
-    let restaurantQueryURL = 'https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term="' + searchitem + '"';
+    let restaurantQueryURL = 'https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term="';
 
-    useEffect(() => {
-        navigator.geolocation.getCurrentPosition((position) => {
-            restaurantQueryURL += `&latitude=${position.coords.latitude}&longitude=${position.coords.longitude}`
-          });
-    }, [handleSave]);
+    function getLocation(coOrdinates) {
+        setErrors("");
+        setlocation(coOrdinates)
+    }
 
     function handleChange(event) {
         setsearchitem(event.target.value);
@@ -24,14 +24,15 @@ export default function Recipes() {
     function formIsValid() {
         const errors = {};
         if (!searchitem) errors.name = "*Field is required";
+        if (!location) errors.location = "*Field is required";
         setErrors(errors);
         return Object.keys(errors).length === 0;
     }
 
     function handleSave(event) {
         event.preventDefault();
-        console.log(restaurantQueryURL)
         if (!formIsValid()) return;
+        restaurantQueryURL += searchitem + `"&latitude=${location.lat}&longitude=${location.lng}`;
         setloading(!loading);
         setsearchitem("");
         axios
@@ -53,8 +54,7 @@ export default function Recipes() {
         <div className="page-content">
             <div className="recipe-page-container">
                 <h3>Find a Restaurant Nearby</h3>
-                <Location />
-                <Form onSubmit={handleSave}>
+                <Form>
                     <Form.Group controlId="formBasicName">
                         <Form.Label>Restaurant Type</Form.Label>
                         <Form.Control
@@ -63,12 +63,14 @@ export default function Recipes() {
                             value={searchitem}
                             onChange={handleChange}
                         />
-                        {errors.name ? <div className="form-error">{errors.name}</div> : null}
+                        {errors.location ? <div className="form-error">{errors.location}</div> : null}
                     </Form.Group>
-                    <Button variant="primary" type="submit">
-                        Search
-                </Button>
+                    <Location getLocationCoordinates={getLocation} />
+                    {errors.name ? <div className="form-error">{errors.name}</div> : null}
                 </Form>
+                <button className="modal-call-button" variant="primary" type="submit" onClick={handleSave}>
+                    <span>Search</span>
+                </button>
                 <div className="loader errors">
                     {(loading === true ? (<Spinner className="search-loader" animation="grow" />) : (null))}
                     {errors.results ? <div className="form-error">{errors.results}</div> : null}
@@ -80,7 +82,7 @@ export default function Recipes() {
                                 <Card.Header>
                                     <Accordion.Toggle className="card-header-click" as={Card.Header} variant="link" eventKey={i}>
                                         <div className="accordion-header-contents d-flex flex-row flex-wrap justify-content-space-around p-4 mx-2 my-2 my-lg-1 text-center">
-                                            <img src={result.image_url} className="recipe-results-image" alt="recipe"></img>
+                                            <img src={result.image_url} className="recipe-results-image" alt="restaurant"></img>
                                             <div className="accordion-text px-4">
                                                 <h3>{result.name}</h3>
                                                 <p>{result.location.city}</p>
@@ -92,10 +94,10 @@ export default function Recipes() {
                                 </Card.Header>
                                 <Accordion.Collapse eventKey={i} className="accordion-collapse">
                                     <Card.Body>
-                                    <p><strong>Category: </strong>{result.categories[0].title}</p>
-                                    <p><strong>Location: </strong>{result.location.address1}, {result.location.city}</p>
-                                    <p><strong>Contact: </strong>{result.phone}</p>
-                                    <button className="recipe-button"><a href={result.url} target="_blank">Website</a></button>
+                                        <p><strong>Category: </strong>{result.categories[0].title}</p>
+                                        <p><strong>Location: </strong>{result.location.address1}, {result.location.city}</p>
+                                        <p><strong>Contact: </strong>{result.phone}</p>
+                                        <button className="recipe-button"><a href={result.url} target="_blank" rel="noopener noreferrer">Website</a></button>
                                     </Card.Body>
                                 </Accordion.Collapse>
                             </Card>

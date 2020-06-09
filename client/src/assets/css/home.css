@@ -37,7 +37,7 @@
     transition: all 0.5s;
     cursor: pointer;
     margin-top: 20px;
-    margin-left: 50px;
+    margin-left: 20px;
   }
   
   .modal-call-button span {
@@ -71,6 +71,7 @@
     transition-duration: 5s;
     transition-timing-function: ease-in-out;
     transition-delay: 8s;
+    text-align: center;
 }
 
 .restaurant-carousel {

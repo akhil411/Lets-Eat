@@ -13,6 +13,9 @@
   #root .navbar .navbar-brand {
     margin-left: 0px;
   }
+  .restaurant-selection-content {
+    min-height: 400px;
+  }
 }
 
 
