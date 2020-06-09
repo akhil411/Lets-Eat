@@ -39,7 +39,10 @@ module.exports.register = (event, context, callback) => {
         // create a response
         const response = {
             statusCode: 200,
-            body: "User is registered Successfully",
+            headers: {
+            "Access-Control-Allow-Origin": "*",
+        },
+            body: JSON.stringify("User is registered Successfully"),
         };
         callback(null, response);
     });
