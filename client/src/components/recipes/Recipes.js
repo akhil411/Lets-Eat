@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
 import { Button, Form, Spinner, Accordion, Card } from 'react-bootstrap';
 import axios from "axios";
+import { connect } from 'react-redux';
+import { setRecipeResults } from "../../redux/actions/action";
 
-export default function Recipes() {
+const Recipes = ({
+    recipeResults,
+    setRecipeResults
+}) => {
     const [searchitem, setsearchitem] = useState("");
     const [loading, setloading] = useState(false);
-    const [searchresults, setsearchresults] = useState("");
     const [errors, setErrors] = useState({});
 
     function handleChange(event) {
@@ -31,7 +35,7 @@ export default function Recipes() {
             .then((response) => {
                 setloading(false);
                 if (response.data.hits.length !== 0) {
-                    setsearchresults(response.data.hits);
+                    setRecipeResults(response.data.hits);
                 } else {
                     const errors = {};
                     errors.results = "No results found! Check your search item";
@@ -65,8 +69,8 @@ export default function Recipes() {
                     {errors.results ? <div className="form-error">{errors.results}</div> : null}
                 </div>
                 <Accordion className="accordion-recipe">
-                    {(searchresults) ? (
-                        searchresults.map((result, i) => (
+                    {(recipeResults) ? (
+                        recipeResults.map((result, i) => (
                             <Card key={i}>
                                 <Card.Header>
                                     <Accordion.Toggle className="card-header-click" as={Card.Header} variant="link" eventKey={i}>
@@ -94,3 +98,13 @@ export default function Recipes() {
         </div>
     )
 }
+
+const mapDispatchToProps = {
+    setRecipeResults: setRecipeResults,
+};
+
+const mapStateToProps = (state) => ({
+    recipeResults: state.searchReducer.recipeResults
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Recipes);

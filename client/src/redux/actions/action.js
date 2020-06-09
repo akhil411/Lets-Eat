@@ -15,3 +15,13 @@ export const setCurrentUser = (json) => ({
     type: 'SET_CURRENT_USER',
     json
 });
+
+export const setRestaurantResults = (results) => ({
+    type: 'SET_RESTAURANT_RESULTS',
+    results
+});
+
+export const setRecipeResults = (results) => ({
+    type: 'SET_RECIPE_RESULTS',
+    results
+});

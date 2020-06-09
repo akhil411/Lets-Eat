@@ -1,5 +1,10 @@
 .autocomplete-dropdown-container {
     position: absolute;
     margin-top: 5px;
+    padding-left: 10px;
     z-index: 999999;
+    border-right:  3px solid #F5F5F5; 
+    border-bottom: 3px solid #F5F5F5;
+    border-left: 3px solid #F5F5F5;
+    width: 900px;
 }

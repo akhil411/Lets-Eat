@@ -2,11 +2,15 @@ import React, { useState } from 'react';
 import { Form, Spinner, Accordion, Card } from 'react-bootstrap';
 import axios from "axios";
 import Location from "./Location";
+import { connect } from 'react-redux';
+import { setRestaurantResults } from "../../redux/actions/action";
 
-export default function Recipes() {
+const Restaurants = ({
+    restaurantResults,
+    setRestaurantResults
+}) => {
     const [searchitem, setsearchitem] = useState("");
     const [loading, setloading] = useState(false);
-    const [searchresults, setsearchresults] = useState("");
     const [location, setlocation] = useState("");
     const [errors, setErrors] = useState({});
     let restaurantQueryURL = 'https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term="';
@@ -40,7 +44,7 @@ export default function Recipes() {
             .then((response) => {
                 setloading(false);
                 if (response.data.businesses.length !== 0) {
-                    setsearchresults(response.data.businesses);
+                    setRestaurantResults(response.data.businesses);
                 } else {
                     const errors = {};
                     errors.results = "No results found! Check your search item";
@@ -76,8 +80,8 @@ export default function Recipes() {
                     {errors.results ? <div className="form-error">{errors.results}</div> : null}
                 </div>
                 <Accordion className="accordion-recipe accordion-restaurants">
-                    {(searchresults) ? (
-                        searchresults.map((result, i) => (
+                    {(restaurantResults) ? (
+                        restaurantResults.map((result, i) => (
                             <Card key={i}>
                                 <Card.Header>
                                     <Accordion.Toggle className="card-header-click" as={Card.Header} variant="link" eventKey={i}>
@@ -109,3 +113,12 @@ export default function Recipes() {
     )
 }
 
+const mapDispatchToProps = {
+    setRestaurantResults: setRestaurantResults,
+};
+
+const mapStateToProps = (state) => ({
+    restaurantResults: state.searchReducer.restaurantResults
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Restaurants);
