@@ -85,9 +85,9 @@ const Restaurants = ({
                             <Card key={i}>
                                 <Card.Header>
                                     <Accordion.Toggle className="card-header-click" as={Card.Header} variant="link" eventKey={i}>
-                                        <div className="accordion-header-contents d-flex flex-row flex-wrap justify-content-space-around p-4 mx-2 my-2 my-lg-1 text-center">
+                                        <div className="accordion-header-contents d-flex flex-row flex-wrap justify-content-around p-2 mx-2 my-2 my-lg-1 text-center">
                                             <img src={result.image_url} className="recipe-results-image" alt="restaurant"></img>
-                                            <div className="accordion-text px-4">
+                                            <div className="accordion-text px-2">
                                                 <h3>{result.name}</h3>
                                                 <p>{result.location.city}</p>
                                                 <p><strong>Rating: </strong>{result.rating}</p>

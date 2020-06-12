@@ -16,11 +16,32 @@
   .restaurant-selection-content {
     min-height: 400px;
   }
+  #root .accordion-recipe {
+    width: 300px;
+  }
+  .page-content .recipe-results-image {
+    height: 75px;
+  }
+  .page-content .recipe-page-container h3 {
+    font-size: 1.25rem;
+  }
+  .page-content .accordion-text p {
+    font-size: 14px;
+  }
+  .page-content .accordion-text button, .page-content .recipe-page-container {
+    font-size: 14px;
+  }
+  .footer-container .footer-logo-image {
+    height: 30px;
+  }
+  .footer-container .footer-contact-box img {
+    width: 15px;
+  }
 }
 
 
 @media screen and (max-width: 850px) {
-  #root .accordion-recipe {
+  .page-content .accordion-recipe {
     width: 420px;
   }
   #root .accordion-text {
@@ -30,5 +51,8 @@
   }
   #root .navbar .navbar-brand img {
     height: 50px;
+  }
+  #root .page-content {
+    min-height: calc(100vh - 176px);
   }
 }

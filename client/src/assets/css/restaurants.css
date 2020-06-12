@@ -6,5 +6,6 @@
     border-right:  3px solid #F5F5F5; 
     border-bottom: 3px solid #F5F5F5;
     border-left: 3px solid #F5F5F5;
-    width: 900px;
+    width: calc(100vw - 75px);
+    max-width: 900px;
 }
